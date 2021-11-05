@@ -54,6 +54,7 @@ height: 40px
 .header-primary {
     color: #fff;
     text-transform: uppercase;
+    backface-visibility: hidden
     
 }
 
@@ -62,6 +63,8 @@ display: block;
 font-size: 60px;
 font-weight: 400;
 letter-spacing: 35px;
+animation: moveInLeft 1s ease-out
+
 }
 
 .header-primary-sub {
@@ -69,6 +72,49 @@ display: block;
 font-size: 20px;
 font-weight: 700;
 letter-spacing: 17.4px;
+animation: moveInRight 1s ease-out
 
+
+}
+
+/* you name it first after the keyframe */
+/* best practice is to only animate opacity and transform since browsers are optimized to handle that */
+/* these elements move in a type fo cardisian plane with x and y axis. use positive numbers to go left and right. */
+/* whenever you are ready to use the animation you just take the name you gave the keyframes and assign it to the property "animation-name", in this case "animation-name: moveInLeft" */
+/* after that you specify the "animation-duration" and after that it should work, for example "animation-duration: 3s" */
+/* other things you can use is "animation-delay" which causes a delay before tha animation starts to the time you specify */
+/* also "animation-iteration-count" will perform the animation the amount of times you want it to */
+/* also "animation-timing-function" defines how the animation will proceed over time as in how fast or slow ove time */
+
+@keyframes moveInLeft {
+    0% {
+        opacity:0;
+        transform: translateX(-100px)
+    }
+
+    80% {
+        transform: translateX(10px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0)
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity:0;
+        transform: translateX(100px)
+    }
+
+    80% {
+        transform: translateX(-10px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0)
+    }
 }
 
